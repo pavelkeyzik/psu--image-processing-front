@@ -1,0 +1,31 @@
+.Range {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+}
+
+.Range__value {
+  width: 50px;
+  margin-left: 20px;
+  text-align: right;
+}
+
+.Range__input {
+  flex-grow: 1;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--range-slider-background);
+}
+
+.Range__input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.Range__input::-moz-range-thumb,
+.Range__input::-webkit-slider-thumb {
+  background: var(--primary);
+  border: none;
+}

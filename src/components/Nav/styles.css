@@ -1,0 +1,35 @@
+.Nav__root {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  height: 60px;
+  padding: 0 30px;
+  background-color: var(--secondary);
+  box-shadow: 0 0 4px rgba(0, 0, 0, .5);
+  z-index: 2;
+}
+
+.Nav__section {
+  height: 100%;
+}
+
+.Nav__link {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 20px;
+  color: var(--text-foreground);
+  background: none;
+  border: 0;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.Nav__link:hover {
+  background-color: var(--secondary-hover);
+}
+
+.Nav__link-icon {
+  padding-right: 10px;
+}

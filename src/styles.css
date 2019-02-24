@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
+:root {
+  --primary: #26b9dd;
+  --secondary: #222;
+  --secondary-hover: #151515;
+  --text-foreground: #eee;
+  --body-bg: #121212;
+
+  --preview-toggle-background: #fff;
+  --preview-toggle-foreground: #333;
+
+  --operations-section-foreground: #666;
+
+  --button-color: #aaa;
+  --button-color-active: var(--primary);
+  --button-color-apply: #32cd32;
+
+  --range-slider-background: #5a5a5a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  max-height: 100vh;
+  background: var(--body-bg);
+  color: var(--text-foreground);
+  font-family: 'Lato', Arial, Helvetica, sans-serif;
+}

@@ -1,0 +1,31 @@
+#root {
+  height: 100vh;
+  overflow: hidden;
+}
+
+.App__root {
+  height: 100%;
+}
+
+.App__main {
+  display: flex;
+  height: calc(100% - 60px);
+}
+
+.App__preview {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+.App__operations {
+  display: flex;
+  width: 400px;
+  height: 100%;
+  overflow-y: auto;
+  background: var(--secondary);
+  padding: 20px 30px;
+}

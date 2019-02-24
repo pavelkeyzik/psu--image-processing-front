@@ -1,0 +1,25 @@
+.Operations {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.Operations button {
+  margin-bottom: 20px;
+}
+
+.Operations__section {
+  text-transform: uppercase;
+  color: var(--operations-section-foreground);
+  margin: 10px 0;
+  font-size: .7em;
+}
+
+.Operations__actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  bottom: 0px;
+  flex-grow: 1;
+}

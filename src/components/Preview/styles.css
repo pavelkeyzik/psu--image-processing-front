@@ -1,0 +1,32 @@
+.Preview {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  overflow: auto;
+  flex-grow: 6;
+  position: relative;
+}
+
+.Preview__toggler {
+  display: flex;
+  padding: 10px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  border-radius: 3px;
+  background: var(--preview-toggle-foreground);
+  color: var(--preview-toggle-background);
+  opacity: .4;
+  transition: .2s;
+  cursor: pointer;
+}
+
+.Preview__toggler.active {
+  background: var(--preview-toggle-background);
+  color: var(--preview-toggle-foreground);
+}
+
+.Preview__toggler:hover {
+  opacity: .6;
+}
