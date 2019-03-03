@@ -17,6 +17,11 @@
   --button-color-apply: #32cd32;
 
   --range-slider-background: #5a5a5a;
+
+  --preview-fallback-foreground: #666;
+
+  --remove-foreground: #e60035;
+  --remove-background: #34000c;
 }
 
 * {

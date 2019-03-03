@@ -1,3 +1,3 @@
-import Operations from './Operations';
+import Operations from './Operations.tsx';
 
 export default Operations;

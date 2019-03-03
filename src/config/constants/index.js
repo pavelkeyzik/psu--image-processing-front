@@ -1,0 +1,6 @@
+export const SET_IMAGE = 'SET_IMAGE';
+export const SET_PREVIEW = 'SET_PREVIEW';
+export const SET_FIRST_IMAGE = 'SET_FIRST_IMAGE';
+export const FETCHING_STARTED = 'FETCHING_STARTED';
+export const FETCHING_FINISHED = 'FETCHING_FINISHED';
+export const RESET = 'RESET';
