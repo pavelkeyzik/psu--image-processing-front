@@ -14,7 +14,7 @@ const Operations = () => {
 
   const { state, dispatch } = useContext(ImageContext);
 
-  const handleOpearaion = async (type: string) => {
+  const handleOpearaion = async (type: string, count?: number) => {
     dispatch({ type: FETCHING_STARTED });
     const formData = new FormData();
     formData.append('image', state.image);
@@ -22,7 +22,7 @@ const Operations = () => {
     const requestHeaders: any = {
       'Content-Type': 'multipart/form-data',
     };
-    const response = await fetch(`http://localhost:8080/image?operation=${type}`, {
+    const response = await fetch(`http://localhost:8080/image?operation=${type}&count=${count}`, {
       method: 'POST',
       body: formData,
     });
@@ -54,8 +54,65 @@ const Operations = () => {
     handleOpearaion('gaussian-noize');
   };
 
-  const handleMedianFilter = () => {
-    handleOpearaion('median-filter');
+  const handleMedianFilter = (count: number) => () => {
+    handleOpearaion('median-filter', count);
+  };
+
+  const handleLowFrequency = (count: number) => () => {
+    console.log('count', count);
+    handleOpearaion('low-frequency', count);
+  };
+
+  const handleHighFrequency = (count: number) => () => {
+    handleOpearaion('high-frequency', count);
+  };
+
+  const handleGaussianBlur = (count: number) => () => {
+    handleOpearaion('gaussian-blur', count);
+  };
+
+  const handleEmbossing = (count: number) => () => {
+    handleOpearaion('embossing', count);
+  };
+
+  const handleChangeRange = (count: number) => {
+    handleOpearaion('brightness', count);
+  };
+
+  const handleChangeZoom = (count: number) => {
+    if (count == 0) {
+      handleOpearaion('zoom', 1);
+    } else {
+      handleOpearaion('zoom', count);
+    }
+  };
+
+  const handleVerticalLinear = () => {
+    handleOpearaion('vertical-linear');
+  };
+
+  const handleHorizontalLinear = () => {
+    handleOpearaion('horizontal-linear');
+  };
+
+  const handleDiagonalLinear = () => {
+    handleOpearaion('diagonal');
+  };
+
+  const handleLaplasaLinear = () => {
+    handleOpearaion('laplasa');
+  };
+
+  const handleRobertsa = () => {
+    handleOpearaion('robertsa');
+  };
+
+  const handlePrevitta = () => {
+    handleOpearaion('previtta');
+  };
+
+  const handleSobelya = () => {
+    handleOpearaion('sobelya');
   };
 
   return (
@@ -73,28 +130,70 @@ const Operations = () => {
         <Button onClick={handleGaussianNoize}>Gaussian blur</Button>
       </div>
       <span className="Operations__section">Brightnes</span>
-      <Range />
+      <Range
+        onChange={handleChangeRange}
+        step={0}
+        min={0}
+        max={4}
+        defaultValue={2}
+      />
       <span className="Operations__section">Zoom</span>
-      <Range />
+      <Range
+        onChange={handleChangeZoom}
+        step={2}
+        min={-4}
+        max={4}
+        defaultValue={0}
+      />
       <span className="Operations__section">Contrast</span>
       <div className="Button__group">
         <Button onClick={handleContrast}>Contrast Enhancement</Button>
       </div>
-      <span className="Operations__section">Mask filtration</span>
+      <span className="Operations__section">Low frequency</span>
       <div className="Button__group">
-        <Button>Low frequency</Button>
+        <Button onClick={handleLowFrequency(3)}>3x3</Button>
+        <Button onClick={handleLowFrequency(5)}>5x5</Button>
+        <Button onClick={handleLowFrequency(7)}>7x7</Button>
       </div>
+      <span className="Operations__section">High frequency</span>
       <div className="Button__group">
-        <Button>High frequency</Button>
+        <Button onClick={handleHighFrequency(3)}>3x3</Button>
+        <Button onClick={handleHighFrequency(5)}>5x5</Button>
+        <Button onClick={handleHighFrequency(7)}>7x7</Button>
       </div>
+      <span className="Operations__section">Gaussian blur</span>
       <div className="Button__group">
-        <Button>Gaussian blur</Button>
+        <Button onClick={handleGaussianBlur(3)}>3x3</Button>
+        <Button onClick={handleGaussianBlur(5)}>5x5</Button>
+        <Button onClick={handleGaussianBlur(7)}>7x7</Button>
       </div>
+      <span className="Operations__section">Median</span>
       <div className="Button__group">
-        <Button>Embossing</Button>
+        <Button onClick={handleMedianFilter(3)}>3x3</Button>
+        <Button onClick={handleMedianFilter(5)}>5x5</Button>
+        <Button onClick={handleMedianFilter(7)}>7x7</Button>
       </div>
+      <span className="Operations__section">Embossing</span>
       <div className="Button__group">
-        <Button onClick={handleMedianFilter}>Median</Button>
+        <Button onClick={handleEmbossing(3)}>3x3</Button>
+        <Button onClick={handleEmbossing(5)}>5x5</Button>
+        <Button onClick={handleEmbossing(7)}>7x7</Button>
+      </div>
+      <span className="Operations__section">Сontour Selection</span>
+      <div className="Button__group">
+        <Button onClick={handleVerticalLinear}>Vertical</Button>
+        <Button onClick={handleHorizontalLinear}>Horizontal</Button>
+        <Button onClick={handleDiagonalLinear}>Diagonal</Button>
+      </div>
+      <span className="Operations__section">Linear Contrast</span>
+      <div className="Button__group">
+        <Button onClick={handleLaplasaLinear}>Laplasa</Button>
+      </div>
+      <span className="Operations__section">Nonlinear Contrast</span>
+      <div className="Button__group">
+        <Button onClick={handlePrevitta}>Previtta</Button>
+        <Button onClick={handleRobertsa}>Robertsa</Button>
+        <Button onClick={handleSobelya}>Sobelya</Button>
       </div>
       <span className="Operations__section">Get image</span>
       <div className="Operations__actions">

@@ -1,3 +1,3 @@
-import Range from './Range';
+import Range from './Range.tsx';
 
 export default Range;

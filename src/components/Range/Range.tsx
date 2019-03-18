@@ -2,12 +2,21 @@ import React, { useState, useRef } from 'react';
 
 import './styles.css';
 
-const Range = () => {
-  const ref = useRef();
-  const [currentValue, setValue] = useState(0);
+interface IProps {
+  onChange: (arg: any) => void,
+  step: number,
+  min: number,
+  max: number,
+  defaultValue: number,
+};
 
-  const handleChange = (ev) => {
+const Range = ({ onChange, step, min, max, defaultValue }: IProps) => {
+  const ref = useRef(null);
+  const [currentValue, setValue] = useState(defaultValue);
+
+  const handleChange = (ev: any) => {
     setValue(ev.currentTarget.value);
+    onChange(ev.currentTarget.value);
   };
 
   return (
@@ -18,10 +27,10 @@ const Range = () => {
         onChange={handleChange}
         className="Range__input"
         type="range"
-        step="10"
+        step={step}
         value={currentValue}
-        min="-100"
-        max="100"
+        min={min}
+        max={max}
       />
     </div>
   );
